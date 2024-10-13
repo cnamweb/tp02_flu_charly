@@ -75,3 +75,20 @@ input.is-invalid {
     color: red;
     font-size: 12px;
 }
+
+.result{
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #9dc8cf;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.result_container p{
+    border-top: black 1px solid;
+    width: 100%;
+    margin: 0;
+}
