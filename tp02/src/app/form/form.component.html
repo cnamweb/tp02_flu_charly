@@ -1,7 +1,7 @@
 <h2>Remplis moi 👉👈</h2>
 <form #form="ngForm" (ngSubmit)="submit(form)">
     <div class="form_input_group">
-        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['lastname'].invalid}">
+        <div class="form_input_wrapper">
             <label for="lastname">Nom</label>
             <input [(ngModel)]="lastname" type="text" id="lastname" name="lastname" required placeholder="Nom"
                 #lastnameCtrl="ngModel">
@@ -9,7 +9,7 @@
                 Le nom est requis.
             </div>
         </div>
-        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['firstname'].invalid}">
+        <div class="form_input_wrapper">
             <label for="firstname">Prénom</label>
             <input [(ngModel)]="firstname" type="text" id="firstname" name="firstname" required placeholder="Prenom"
                 #firstnameCtrl="ngModel">
@@ -29,7 +29,7 @@
     </div>
 
     <div class="form_input_group">
-        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['email'].invalid}">
+        <div class="form_input_wrapper">
             <label for="email">Email</label>
             <input [(ngModel)]="email" type="email" id="email" name="email" required
                 placeholder="john.someone@example.com" #emailCtrl="ngModel">
@@ -45,7 +45,7 @@
     </div>
 
     <div class="form_input_group">
-        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['adress'].invalid}">
+        <div class="form_input_wrapper">
             <label for="adress">Adresse</label>
             <input [(ngModel)]="adress" type="text" id="adress" name="adress" required placeholder="Adresse"
                 #adressCtrl="ngModel">
@@ -53,7 +53,7 @@
                 L'adresse est requise.
             </div>
         </div>
-        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['zip'].invalid}">
+        <div class="form_input_wrapper">
             <label for="zip">Code postal</label>
             <input [(ngModel)]="zip" type="text" id="zip" name="zip" required placeholder="Code postal"
                 #zipCtrl="ngModel">
@@ -61,7 +61,7 @@
                 Le code postal est requis.
             </div>
         </div>
-        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['city'].invalid}">
+        <div class="form_input_wrapper">
             <label for="city">Ville</label>
             <input [(ngModel)]="city" type="text" id="city" name="city" required placeholder="Ville"
                 #cityCtrl="ngModel">
@@ -72,7 +72,7 @@
     </div>
 
     <div class="form_input_group">
-        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['login'].invalid}">
+        <div class="form_input_wrapper">
             <label for="login">Login</label>
             <input [(ngModel)]="login" type="text" id="login" name="login" required placeholder="Login"
                 #loginCtrl="ngModel">
@@ -80,7 +80,7 @@
                 Le login est requis.
             </div>
         </div>
-        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['password'].invalid}">
+        <div class="form_input_wrapper">
             <label for="password">Mot de passe</label>
             <input [(ngModel)]="password" type="password" id="password" name="password" required minlength="8"
                 placeholder="Mot de passe" (keyup)="keyupConfirmPassword()" #passwordCtrl="ngModel">
@@ -89,8 +89,7 @@
                 <div *ngIf="passwordCtrl.errors?.['minlength']" class="error-message">Minimum 8 caractères.</div>
             </div>
         </div>
-        <div class="form_input_wrapper"
-            [ngClass]="{'has-error': form.submitted && form.controls['confirmPassword'].invalid}">
+        <div class="form_input_wrapper">
             <label for="confirmPassword">Confirmer le mot de passe</label>
             <input [(ngModel)]="confirmPassword" type="password" id="confirmPassword" name="confirmPassword"
                 placeholder="Confirmation du mot de passe" required (keyup)="keyupConfirmPassword()"
