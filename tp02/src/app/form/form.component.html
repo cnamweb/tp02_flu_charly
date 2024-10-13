@@ -1,0 +1,127 @@
+<h2>Remplis moi 👉👈</h2>
+<form #form="ngForm" (ngSubmit)="submit(form)">
+    <div class="form_input_group">
+        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['lastname'].invalid}">
+            <label for="lastname">Nom</label>
+            <input [(ngModel)]="lastname" type="text" id="lastname" name="lastname" required placeholder="Nom"
+                #lastnameCtrl="ngModel">
+            <div *ngIf="lastnameCtrl.invalid && (lastnameCtrl.touched || form.submitted)" class="error-message">
+                Le nom est requis.
+            </div>
+        </div>
+        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['firstname'].invalid}">
+            <label for="firstname">Prénom</label>
+            <input [(ngModel)]="firstname" type="text" id="firstname" name="firstname" required placeholder="Prenom"
+                #firstnameCtrl="ngModel">
+            <div *ngIf="firstnameCtrl.invalid && (firstnameCtrl.touched || form.submitted)" class="error-message">
+                Le prénom est requis.
+            </div>
+        </div>
+        <div class="form_input_wrapper">
+            <label for="civility">Civilité</label>
+            <select class="form-select" [(ngModel)]="civility" id="civility" name="civility">
+                <option value="Mme">Mme</option>
+                <option value="Mlle">Mlle</option>
+                <option value="M.">M.</option>
+                <option value="Other">Autre</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form_input_group">
+        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['email'].invalid}">
+            <label for="email">Email</label>
+            <input [(ngModel)]="email" type="email" id="email" name="email" required
+                placeholder="john.someone@example.com" #emailCtrl="ngModel">
+            <div *ngIf="emailCtrl.invalid && (emailCtrl.touched || form.submitted)" class="error-message">
+                Un email valide est requis.
+            </div>
+        </div>
+
+        <div class="form_input_wrapper">
+            <label for="phone">Téléphone</label>
+            <input [(ngModel)]="phone" type="tel" id="phone" name="phone" placeholder="01 23 45 67 89">
+        </div>
+    </div>
+
+    <div class="form_input_group">
+        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['adress'].invalid}">
+            <label for="adress">Adresse</label>
+            <input [(ngModel)]="adress" type="text" id="adress" name="adress" required placeholder="Adresse"
+                #adressCtrl="ngModel">
+            <div *ngIf="adressCtrl.invalid && (adressCtrl.touched || form.submitted)" class="error-message">
+                L'adresse est requise.
+            </div>
+        </div>
+        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['zip'].invalid}">
+            <label for="zip">Code postal</label>
+            <input [(ngModel)]="zip" type="text" id="zip" name="zip" required placeholder="Code postal"
+                #zipCtrl="ngModel">
+            <div *ngIf="zipCtrl.invalid && (zipCtrl.touched || form.submitted)" class="error-message">
+                Le code postal est requis.
+            </div>
+        </div>
+        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['city'].invalid}">
+            <label for="city">Ville</label>
+            <input [(ngModel)]="city" type="text" id="city" name="city" required placeholder="Ville"
+                #cityCtrl="ngModel">
+            <div *ngIf="cityCtrl.invalid && (cityCtrl.touched || form.submitted)" class="error-message">
+                La ville est requise.
+            </div>
+        </div>
+    </div>
+
+    <div class="form_input_group">
+        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['login'].invalid}">
+            <label for="login">Login</label>
+            <input [(ngModel)]="login" type="text" id="login" name="login" required placeholder="Login"
+                #loginCtrl="ngModel">
+            <div *ngIf="loginCtrl.invalid && (loginCtrl.touched || form.submitted)" class="error-message">
+                Le login est requis.
+            </div>
+        </div>
+        <div class="form_input_wrapper" [ngClass]="{'has-error': form.submitted && form.controls['password'].invalid}">
+            <label for="password">Mot de passe</label>
+            <input [(ngModel)]="password" type="password" id="password" name="password" required minlength="8"
+                placeholder="Mot de passe" (keyup)="keyupConfirmPassword()" #passwordCtrl="ngModel">
+            <div *ngIf="passwordCtrl.invalid && (passwordCtrl.touched || form.submitted)">
+                <div *ngIf="passwordCtrl.errors?.['required']" class="error-message">Le mot de passe est requis.</div>
+                <div *ngIf="passwordCtrl.errors?.['minlength']" class="error-message">Minimum 8 caractères.</div>
+            </div>
+        </div>
+        <div class="form_input_wrapper"
+            [ngClass]="{'has-error': form.submitted && form.controls['confirmPassword'].invalid}">
+            <label for="confirmPassword">Confirmer le mot de passe</label>
+            <input [(ngModel)]="confirmPassword" type="password" id="confirmPassword" name="confirmPassword"
+                placeholder="Confirmation du mot de passe" required (keyup)="keyupConfirmPassword()"
+                #confirmPasswordCtrl="ngModel">
+            <div *ngIf="confirmPasswordCtrl.invalid && (confirmPasswordCtrl.touched || form.submitted)"
+                class="error-message">
+                Confirmation du mot de passe est requise.
+            </div>
+        </div>
+    </div>
+
+    <div class="form_input_wrapper end">
+        <button type="submit" class="btn-submit">Envoyer</button>
+    </div>
+
+    <div *ngIf="!passwordSame" class="alert alert-warning" role="alert">
+        <p>Les mots de passe ne correspondent pas</p>
+    </div>
+</form>
+
+<div *ngIf="inscriptionDone" class="result">
+    <h2 class="inscription">Inscription réussi !</h2>
+    <div class="result_container">
+        <p>Nom: {{submittedData?.lastname}}</p>
+        <p>Prénom: {{submittedData?.firstname}}</p>
+        <p>Civilité: {{submittedData?.civility}}</p>
+        <p>Email: {{submittedData?.email}}</p>
+        <p>Téléphone: {{submittedData?.phone}}</p>
+        <p>Adresse: {{submittedData?.adress}}</p>
+        <p>Code postal: {{submittedData?.zip}}</p>
+        <p>Ville: {{submittedData?.city}}</p>
+        <p>Login: {{submittedData?.login}}</p>
+    </div>
+</div>
