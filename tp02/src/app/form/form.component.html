@@ -1,4 +1,4 @@
-<h2>Remplis moi 👉👈</h2>
+<h2>Remplis moi !</h2>
 <form #form="ngForm" (ngSubmit)="submit(form)">
     <div class="form_input_group">
         <div class="form_input_wrapper">
@@ -111,7 +111,7 @@
 </form>
 
 <div *ngIf="inscriptionDone" class="result">
-    <h2 class="inscription">Inscription réussi !</h2>
+    <h2 class="inscription">Inscription réussie !</h2>
     <div class="result_container">
         <p>Nom: {{submittedData?.lastname}}</p>
         <p>Prénom: {{submittedData?.firstname}}</p>
