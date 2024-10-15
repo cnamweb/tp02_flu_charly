@@ -92,3 +92,11 @@ input.is-invalid {
     width: 100%;
     margin: 0;
 }
+
+
+
+@media all and (max-width: 900px) {
+    .form_input_group{
+        flex-direction: column;
+    }
+}
